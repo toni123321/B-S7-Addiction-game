@@ -1,0 +1,56 @@
+.mainWrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: aliceblue;
+}
+
+.mainWrapper > * {
+  height: 60%;
+}
+
+.levelBarWrapper {
+  width: 20%;
+  text-align: center;
+}
+
+.levelBarWrapper img {
+  width: auto;
+  height: 100%;
+}
+
+.mainActorWrapper {
+  width: 40%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.mainActorWrapper img {
+  width: 100%;
+  height: auto;
+}
+
+.factsList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  width: 30%;
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 0.5rem;
+  background-color: white;
+}
