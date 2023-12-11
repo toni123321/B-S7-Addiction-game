@@ -105,23 +105,23 @@ const state: IState[] = [
       },
     ],
   },
-  {
-    level: 5,
-    description: "# 5",
-    mainActor: ExampleImg,
-    facts: [
-      {
-        title: "Fact #1",
-        description:
-          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-      },
-      {
-        title: "Fact #2",
-        description:
-          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-      },
-    ],
-  },
+  // {
+  //   level: 5,
+  //   description: "# 5",
+  //   mainActor: ExampleImg,
+  //   facts: [
+  //     {
+  //       title: "Fact #1",
+  //       description:
+  //         "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+  //     },
+  //     {
+  //       title: "Fact #2",
+  //       description:
+  //         "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+  //     },
+  //   ],
+  // },
 ];
 
 const stages: string[] = [
@@ -150,7 +150,7 @@ function App() {
   const handleClick = () => {
     setClickProgress((prevProgress) => prevProgress + 1);
     setProgress((p) => p + 1);
-    if (clickProgress % NR_CLICKS == 0 && level < MAX_LEVEL) {
+    if (clickProgress % NR_CLICKS == 0 && level < MAX_LEVEL - 1) {
       setLevel((prevLevel) => {
         prevLevel = prevLevel + 1;
         setAddiciton(stages[prevLevel]);
@@ -166,7 +166,8 @@ function App() {
           <ProgressBar
             completed={progress}
             maxCompleted={20}
-            customLabel={addiciton}
+            // Adding first letter of the stage as label
+            customLabel={addiciton.substring(0, 1).toUpperCase()}
           />
         </div>
         <div className="middleSection">
@@ -180,15 +181,8 @@ function App() {
             <button onClick={handleClick}> Drink That </button>
           </div>
           <div>LEVEL: {level}</div>
+          <div>STAGE: {addiciton}</div>
         </div>
-
-        {/* <div className="factsList">
-          {level
-            ? state[level].facts.map((fact) => (
-                <Fact title={fact.title} description={fact.description} />
-              ))
-            : ""}
-        </div> */}
         <div className="factsList">
           {state[level].facts.map((fact, index) => (
             <Fact
