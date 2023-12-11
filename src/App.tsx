@@ -1,16 +1,16 @@
 import MainActor from "./assets/mainActor.svg";
-import LevelBar from "./assets/levelBar.svg";
 import "./App.css";
 import { useState } from "react";
 import ExampleImg from "./assets/mainActor.svg";
+import ProgressBar from "@ramonak/react-progress-bar";
 
 interface IFact {
   title: string;
   description: string;
 }
 
-const MAX_LEVEL = 4;
-const NR_CLICKS = 2; // Nr of click per level
+const MAX_LEVEL = 5;
+const NR_CLICKS = 4; // Nr of click per level
 
 interface IState {
   level: number;
@@ -21,7 +21,7 @@ interface IState {
 
 const state: IState[] = [
   {
-    level: 1,
+    level: 0,
     description: "# 1",
     mainActor: ExampleImg,
     facts: [
@@ -38,7 +38,7 @@ const state: IState[] = [
     ],
   },
   {
-    level: 2,
+    level: 1,
     description: "# 2",
     mainActor: ExampleImg,
     facts: [
@@ -55,8 +55,25 @@ const state: IState[] = [
     ],
   },
   {
-    level: 3,
+    level: 2,
     description: "# 3",
+    mainActor: ExampleImg,
+    facts: [
+      {
+        title: "Fact #1",
+        description:
+          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+      },
+      {
+        title: "Fact #2",
+        description:
+          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+      },
+    ],
+  },
+  {
+    level: 3,
+    description: "# 4",
     mainActor: ExampleImg,
     facts: [
       {
@@ -90,18 +107,13 @@ const state: IState[] = [
   },
 ];
 
-// const facts: IFact[] = [
-//   {
-//     title: "Fact #1",
-//     description:
-//       "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-//   },
-//   {
-//     title: "Fact #2",
-//     description:
-//       "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-//   },
-// ];
+const stages: string[] = [
+  "clean",
+  "experimentation",
+  "social use",
+  "dependance",
+  "addiciton",
+];
 
 function Fact({ title, description }: IFact) {
   return (
@@ -113,15 +125,20 @@ function Fact({ title, description }: IFact) {
 }
 
 function App() {
-  const [clickProgress, setClickProgress] = useState(0);
-  const [level, setLevel] = useState(1);
+  const [clickProgress, setClickProgress] = useState(1);
+  const [level, setLevel] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [addiciton, setAddiciton] = useState(stages[level]);
 
   const handleClick = () => {
     setClickProgress((prevProgress) => prevProgress + 1);
-
-    console.log("Level: ", level);
-    if (clickProgress % NR_CLICKS == 0 && level < MAX_LEVEL) {
-      setLevel((prevLevel) => prevLevel + 1);
+    setProgress((p) => p + 1);
+    if (clickProgress % NR_CLICKS == 0 && level < MAX_LEVEL - 1) {
+      setLevel((prevLevel) => {
+        prevLevel = prevLevel + 1;
+        setAddiciton(stages[prevLevel]);
+        return prevLevel;
+      });
     }
   };
 
@@ -129,12 +146,17 @@ function App() {
     <div>
       <div className="mainWrapper">
         <div className="levelBarWrapper">
-          <img src={LevelBar} alt="Level bar" />
+          <ProgressBar
+            completed={progress}
+            maxCompleted={20}
+            // Adding first letter of the stage as label
+            customLabel={addiciton.substring(0, 1).toUpperCase()}
+          />
         </div>
         <div className="middleSection">
           <div className="mainActorWrapper">
             <img
-              src={level ? state[level - 1].mainActor : MainActor}
+              src={level ? state[level].mainActor : MainActor}
               alt="Main actor"
             />
           </div>
@@ -142,14 +164,16 @@ function App() {
             <button onClick={handleClick}> Drink That </button>
           </div>
           <div>LEVEL: {level}</div>
+          <div>STAGE: {addiciton}</div>
         </div>
-
         <div className="factsList">
-          {level
-            ? state[level - 1].facts.map((fact) => (
-                <Fact title={fact.title} description={fact.description} />
-              ))
-            : ""}
+          {state[level].facts.map((fact, index) => (
+            <Fact
+              key={index}
+              title={fact.title}
+              description={fact.description}
+            />
+          ))}
         </div>
       </div>
     </div>

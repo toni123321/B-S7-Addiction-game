@@ -7,10 +7,6 @@
   background-color: aliceblue;
 }
 
-.mainWrapper > * {
-  height: 60%;
-}
-
 .middleSection {
   display: flex;
   justify-content: center;
@@ -22,11 +18,7 @@
 .levelBarWrapper {
   width: 20%;
   text-align: center;
-}
-
-.levelBarWrapper img {
-  width: auto;
-  height: 100%;
+  transform: rotate(-90deg);
 }
 
 .mainActorWrapper {
