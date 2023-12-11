@@ -105,23 +105,6 @@ const state: IState[] = [
       },
     ],
   },
-  // {
-  //   level: 5,
-  //   description: "# 5",
-  //   mainActor: ExampleImg,
-  //   facts: [
-  //     {
-  //       title: "Fact #1",
-  //       description:
-  //         "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-  //     },
-  //     {
-  //       title: "Fact #2",
-  //       description:
-  //         "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-  //     },
-  //   ],
-  // },
 ];
 
 const stages: string[] = [
