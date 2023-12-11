@@ -21,11 +21,6 @@
   transform: rotate(-90deg);
 }
 
-.levelBarWrapper img {
-  width: auto;
-  height: 100%;
-}
-
 .mainActorWrapper {
   width: 100%;
   border: 1px solid black;
