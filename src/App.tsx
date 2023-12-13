@@ -7,6 +7,13 @@ import LevelFourPerson from "./assets/level-4.png";
 import LevelFivePerson from "./assets/level-5.png";
 import ProgressBar from "@ramonak/react-progress-bar";
 
+import DefaultBg from "./assets/default-bg.jpeg";
+import LevelOneBg from "./assets/level-1-bg.jpg";
+import LevelTwoBg from "./assets/level-2-bg.jpg";
+import LevelThreeBg from "./assets/level-3-bg.jpg";
+import LevelFourBg from "./assets/level-4-bg.jpg";
+import LevelFiveBg from "./assets/level-5-bg.jpg";
+
 interface IFact {
   title: string;
   description: string;
@@ -28,7 +35,7 @@ const state: IState[] = [
     level: 0,
     description: "# 1",
     mainActor: LevelOnePerson,
-    background: "./src/assets/background-1.jpeg",
+    background: DefaultBg,
     facts: [
       {
         title: "Fact #1",
@@ -45,8 +52,8 @@ const state: IState[] = [
   {
     level: 1,
     description: "# 2",
-    mainActor: LevelTwoPerson,
-    background: "./src/assets/background-1.jpeg",
+    mainActor: LevelOnePerson,
+    background: LevelOneBg,
     facts: [
       {
         title: "Fact #1",
@@ -63,8 +70,8 @@ const state: IState[] = [
   {
     level: 2,
     description: "# 3",
-    mainActor: LevelThreePerson,
-    background: "./src/assets/background-1.jpeg",
+    mainActor: LevelTwoPerson,
+    background: LevelTwoBg,
     facts: [
       {
         title: "Fact #1",
@@ -81,8 +88,8 @@ const state: IState[] = [
   {
     level: 3,
     description: "# 4",
-    mainActor: LevelFourPerson,
-    background: "./src/assets/background-1.jpeg",
+    mainActor: LevelThreePerson,
+    background: LevelThreeBg,
     facts: [
       {
         title: "Fact #1",
@@ -99,8 +106,26 @@ const state: IState[] = [
   {
     level: 4,
     description: "# 4",
+    mainActor: LevelFourPerson,
+    background: LevelFourBg,
+    facts: [
+      {
+        title: "Fact #1",
+        description:
+          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+      },
+      {
+        title: "Fact #2",
+        description:
+          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+      },
+    ],
+  },
+  {
+    level: 5,
+    description: "# 5",
     mainActor: LevelFivePerson,
-    background: "./src/assets/background-1.jpeg",
+    background: LevelFiveBg,
     facts: [
       {
         title: "Fact #1",
@@ -118,6 +143,7 @@ const state: IState[] = [
 
 const stages: string[] = [
   "clean",
+  "initial use",
   "experimentation",
   "social use",
   "dependance",
@@ -125,8 +151,11 @@ const stages: string[] = [
 ];
 
 const backgroundStyle = (level: number) => ({
-  background: `url(${state[level].background})`,
-  "background-position": "center center",
+  minHeight: "100%",
+  backgroundImage: `url(${state[level].background})`,
+  backgroundSize: "cover",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center center",
 });
 
 function Fact({ title, description }: IFact) {
@@ -143,11 +172,13 @@ function App() {
   const [level, setLevel] = useState(0);
   const [progress, setProgress] = useState(0);
   const [addiciton, setAddiciton] = useState(stages[level]);
+  // Used for Progress bar
+  const maxCompleted = (MAX_LEVEL + 1) * NR_CLICKS;
 
   const handleClick = () => {
     setClickProgress((prevProgress) => prevProgress + 1);
     setProgress((p) => p + 1);
-    if (clickProgress % NR_CLICKS == 0 && level < MAX_LEVEL - 1) {
+    if (clickProgress % NR_CLICKS == 0 && level <= MAX_LEVEL - 1) {
       setLevel((prevLevel) => {
         prevLevel = prevLevel + 1;
         setAddiciton(stages[prevLevel]);
@@ -162,19 +193,13 @@ function App() {
         <div className="levelBarWrapper">
           <ProgressBar
             completed={progress}
-            maxCompleted={20}
+            maxCompleted={maxCompleted}
             // Adding first letter of the stage as label
             customLabel={addiciton.substring(0, 1).toUpperCase()}
           />
         </div>
         <div className="middleSection">
           <div className="mainActorWrapper" style={backgroundStyle(level)}>
-            {/* 
-            <img
-              src={state[level].background}
-              alt="background"
-            />
-            */}
             <img src={state[level].mainActor} alt="Main actor" />
           </div>
           <div>
