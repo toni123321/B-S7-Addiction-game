@@ -1,7 +1,10 @@
-import MainActor from "./assets/mainActor.svg";
 import "./App.css";
 import { useState } from "react";
-import ExampleImg from "./assets/mainActor.svg";
+import LevelOnePerson from "./assets/level-1.png";
+import LevelTwoPerson from "./assets/level-2.png";
+import LevelThreePerson from "./assets/level-3.png";
+import LevelFourPerson from "./assets/level-4.png";
+import LevelFivePerson from "./assets/level-5.png";
 import ProgressBar from "@ramonak/react-progress-bar";
 
 interface IFact {
@@ -16,6 +19,7 @@ interface IState {
   level: number;
   description: string;
   mainActor: string; // Assets/Img
+  background: string; // Assets/Img
   facts: IFact[];
 }
 
@@ -23,7 +27,8 @@ const state: IState[] = [
   {
     level: 0,
     description: "# 1",
-    mainActor: ExampleImg,
+    mainActor: LevelOnePerson,
+    background: "./src/assets/background-1.jpeg",
     facts: [
       {
         title: "Fact #1",
@@ -40,7 +45,8 @@ const state: IState[] = [
   {
     level: 1,
     description: "# 2",
-    mainActor: ExampleImg,
+    mainActor: LevelTwoPerson,
+    background: "./src/assets/background-1.jpeg",
     facts: [
       {
         title: "Fact #1",
@@ -57,7 +63,8 @@ const state: IState[] = [
   {
     level: 2,
     description: "# 3",
-    mainActor: ExampleImg,
+    mainActor: LevelThreePerson,
+    background: "./src/assets/background-1.jpeg",
     facts: [
       {
         title: "Fact #1",
@@ -74,7 +81,8 @@ const state: IState[] = [
   {
     level: 3,
     description: "# 4",
-    mainActor: ExampleImg,
+    mainActor: LevelFourPerson,
+    background: "./src/assets/background-1.jpeg",
     facts: [
       {
         title: "Fact #1",
@@ -91,7 +99,8 @@ const state: IState[] = [
   {
     level: 4,
     description: "# 4",
-    mainActor: ExampleImg,
+    mainActor: LevelFivePerson,
+    background: "./src/assets/background-1.jpeg",
     facts: [
       {
         title: "Fact #1",
@@ -114,6 +123,11 @@ const stages: string[] = [
   "dependance",
   "addiciton",
 ];
+
+const backgroundStyle = (level: number) => ({
+  background: `url(${state[level].background})`,
+  "background-position": "center center",
+});
 
 function Fact({ title, description }: IFact) {
   return (
@@ -154,11 +168,14 @@ function App() {
           />
         </div>
         <div className="middleSection">
-          <div className="mainActorWrapper">
+          <div className="mainActorWrapper" style={backgroundStyle(level)}>
+            {/* 
             <img
-              src={level ? state[level].mainActor : MainActor}
-              alt="Main actor"
+              src={state[level].background}
+              alt="background"
             />
+            */}
+            <img src={state[level].mainActor} alt="Main actor" />
           </div>
           <div>
             <button onClick={handleClick}> Drink That </button>
