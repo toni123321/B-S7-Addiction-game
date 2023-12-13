@@ -14,7 +14,7 @@ interface IFact {
     description: string;
 }
 
-const MAX_LEVEL = 5;
+const MAX_LEVEL = 6;
 const NR_CLICKS = 4; // Nr of click per level
 
 
@@ -48,8 +48,8 @@ const state: IState[] = [
     {
         level: 1,
         description: "# 2",
-        mainActor: LevelTwoPerson,
-        background: "./src/assets/background-1.jpeg",
+        mainActor: LevelOnePerson,
+        background: "./src/assets/level-1-bg.jpg",
         facts: [
             {
                 title: "Fact #1",
@@ -66,8 +66,8 @@ const state: IState[] = [
     {
         level: 2,
         description: "# 3",
-        mainActor: LevelThreePerson,
-        background: "./src/assets/background-1.jpeg",
+        mainActor: LevelTwoPerson,
+        background: "./src/assets/level-2-bg.jpg",
         facts: [
             {
                 title: "Fact #1",
@@ -84,8 +84,8 @@ const state: IState[] = [
     {
         level: 3,
         description: "# 4",
-        mainActor: LevelFourPerson,
-        background: "./src/assets/background-1.jpeg",
+        mainActor: LevelThreePerson,
+        background: "./src/assets/level-3-bg.jpg",
         facts: [
             {
                 title: "Fact #1",
@@ -102,8 +102,8 @@ const state: IState[] = [
     {
         level: 4,
         description: "# 4",
-        mainActor: LevelFivePerson,
-        background: "./src/assets/background-1.jpeg",
+        mainActor: LevelFourPerson,
+        background: "./src/assets/level-4-bg.jpg",
         facts: [
             {
                 title: "Fact #1",
@@ -117,21 +117,42 @@ const state: IState[] = [
             },
         ],
     },
+    {
+        level: 5,
+        description: "# 5",
+        mainActor: LevelFivePerson,
+        background: "./src/assets/level-5-bg.jpg",
+        facts: [
+            {
+                title: "Fact #1",
+                description:
+                    "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+            },
+            {
+                title: "Fact #2",
+                description:
+                    "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+            },
+        ],
+    },
+
 ];
 
 
 
 const stages: string[] = [
     "clean",
+    "initial use",
     "experimentation",
     "social use",
     "dependance",
     "addiciton",
 ];
 
-const backgroundStyle = (level : number) => ({
+const backgroundStyle = (level: number) => ({
     "background": `url(${state[level].background})`,
-    "background-position": "center center"
+    "background-position": "center center",
+    "background-size": "cover"
 });
 
 
