@@ -7,6 +7,13 @@ import LevelFourPerson from "./assets/level-4.png";
 import LevelFivePerson from "./assets/level-5.png";
 import ProgressBar from "@ramonak/react-progress-bar";
 
+import DefaultBg from "./assets/default-bg.jpeg";
+import LevelOneBg from "./assets/level-1-bg.jpg";
+import LevelTwoBg from "./assets/level-2-bg.jpg";
+import LevelThreeBg from "./assets/level-3-bg.jpg";
+import LevelFourBg from "./assets/level-4-bg.jpg";
+import LevelFiveBg from "./assets/level-5-bg.jpg";
+
 interface IFact {
   title: string;
   description: string;
@@ -28,7 +35,7 @@ const state: IState[] = [
     level: 0,
     description: "# 1",
     mainActor: LevelOnePerson,
-    background: "./src/assets/background-1.jpeg",
+    background: DefaultBg,
     facts: [
       {
         title: "Fact #1",
@@ -46,7 +53,7 @@ const state: IState[] = [
     level: 1,
     description: "# 2",
     mainActor: LevelOnePerson,
-    background: "./src/assets/level-1-bg.jpg",
+    background: LevelOneBg,
     facts: [
       {
         title: "Fact #1",
@@ -64,7 +71,7 @@ const state: IState[] = [
     level: 2,
     description: "# 3",
     mainActor: LevelTwoPerson,
-    background: "./src/assets/level-2-bg.jpg",
+    background: LevelTwoBg,
     facts: [
       {
         title: "Fact #1",
@@ -82,7 +89,7 @@ const state: IState[] = [
     level: 3,
     description: "# 4",
     mainActor: LevelThreePerson,
-    background: "./src/assets/level-3-bg.jpg",
+    background: LevelThreeBg,
     facts: [
       {
         title: "Fact #1",
@@ -100,7 +107,7 @@ const state: IState[] = [
     level: 4,
     description: "# 4",
     mainActor: LevelFourPerson,
-    background: "./src/assets/level-4-bg.jpg",
+    background: LevelFourBg,
     facts: [
       {
         title: "Fact #1",
@@ -118,7 +125,7 @@ const state: IState[] = [
     level: 5,
     description: "# 5",
     mainActor: LevelFivePerson,
-    background: "./src/assets/level-5-bg.jpg",
+    background: LevelFiveBg,
     facts: [
       {
         title: "Fact #1",
