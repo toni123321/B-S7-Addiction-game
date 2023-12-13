@@ -143,10 +143,10 @@ const state: IState[] = [
 
 const stages: string[] = [
   "clean",
-  "initial use",
   "experimentation",
   "social use",
-  "dependance",
+  "habbit use",
+  "dependance", // problem use
   "addiciton",
 ];
 
@@ -192,6 +192,7 @@ function App() {
       <div className="mainWrapper">
         <div className="levelBarWrapper">
           <ProgressBar
+            height="70px"
             completed={progress}
             maxCompleted={maxCompleted}
             // Adding first letter of the stage as label
