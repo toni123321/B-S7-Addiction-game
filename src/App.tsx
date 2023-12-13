@@ -144,9 +144,11 @@ const stages: string[] = [
 ];
 
 const backgroundStyle = (level: number) => ({
-  background: `url(${state[level].background})`,
-  "background-position": "center center",
-  "background-size": "cover",
+  minHeight: "100%",
+  backgroundImage: `url(${state[level].background})`,
+  backgroundSize: "cover",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center center",
 });
 
 function Fact({ title, description }: IFact) {
