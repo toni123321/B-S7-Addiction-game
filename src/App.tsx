@@ -200,12 +200,6 @@ function App() {
         </div>
         <div className="middleSection">
           <div className="mainActorWrapper" style={backgroundStyle(level)}>
-            {/* 
-            <img
-              src={state[level].background}
-              alt="background"
-            />
-            */}
             <img src={state[level].mainActor} alt="Main actor" />
           </div>
           <div>
