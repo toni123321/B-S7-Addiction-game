@@ -19,7 +19,7 @@ interface IFact {
   description: string;
 }
 
-const MAX_LEVEL = 6;
+const MAX_LEVEL = 5;
 const NR_CLICKS = 4; // Nr of click per level
 
 interface IState {
@@ -172,11 +172,13 @@ function App() {
   const [level, setLevel] = useState(0);
   const [progress, setProgress] = useState(0);
   const [addiciton, setAddiciton] = useState(stages[level]);
+  // Used for Progress bar
+  const maxCompleted = (MAX_LEVEL + 1) * NR_CLICKS;
 
   const handleClick = () => {
     setClickProgress((prevProgress) => prevProgress + 1);
     setProgress((p) => p + 1);
-    if (clickProgress % NR_CLICKS == 0 && level < MAX_LEVEL - 1) {
+    if (clickProgress % NR_CLICKS == 0 && level <= MAX_LEVEL - 1) {
       setLevel((prevLevel) => {
         prevLevel = prevLevel + 1;
         setAddiciton(stages[prevLevel]);
@@ -191,7 +193,7 @@ function App() {
         <div className="levelBarWrapper">
           <ProgressBar
             completed={progress}
-            maxCompleted={20}
+            maxCompleted={maxCompleted}
             // Adding first letter of the stage as label
             customLabel={addiciton.substring(0, 1).toUpperCase()}
           />
