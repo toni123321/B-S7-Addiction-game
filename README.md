@@ -29,8 +29,8 @@ Game representing Drugs Addiction. This is a group project from Minor Embrace TE
 
 ## Check Formatting
 
-> npm run prettier
+> npm run format
 
 ### Auto-fix formatting
 
-> npm run prettier:fix
+> npm run format:fix
