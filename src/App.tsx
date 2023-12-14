@@ -13,11 +13,8 @@ import LevelTwoBg from "./assets/level-2-bg.jpg";
 import LevelThreeBg from "./assets/level-3-bg.jpg";
 import LevelFourBg from "./assets/level-4-bg.jpg";
 import LevelFiveBg from "./assets/level-5-bg.jpg";
-
-interface IFact {
-  title: string;
-  description: string;
-}
+import Modal from "./components/Modal/Modal";
+import Fact, { IFact } from "./components/Fact/Fact";
 
 const MAX_LEVEL = 5;
 const NR_CLICKS = 4; // Nr of click per level
@@ -38,14 +35,19 @@ const state: IState[] = [
     background: DefaultBg,
     facts: [
       {
-        title: "Fact #1",
+        title: "Clean Stage Fact 1",
         description:
-          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+          "44 % of young people (ages 18 to 34) say it is accepted in their circle of friends to use hard drugs occasionally. 3 in 10 have used hard drugs themselves in the past 3 years.",
       },
       {
-        title: "Fact #2",
+        title: "Clean Stage Fact 2",
         description:
-          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+          "From the 17,5 million people that live in the netherlands, 1,8 million have an addiction of which approximate 50 thousend are getting help",
+      },
+      {
+        title: "Story",
+        description:
+          "Jules starts from a point of being 'clean', without any substance use. He describes his normal upbringing, challenging the stereotype that addiction only affects those from troubled backgrounds.",
       },
     ],
   },
@@ -56,14 +58,19 @@ const state: IState[] = [
     background: LevelOneBg,
     facts: [
       {
-        title: "Fact #1",
+        title: "Experimentation Stage Fact 1",
         description:
-          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+          "After using coke once the chance of you getting addicted to coke is approximatly 15% .",
       },
       {
-        title: "Fact #2",
+        title: "Experimentation Stage Fact 2",
         description:
-          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+          "Although there is little data available on the use of 3-MMC (also known as poes or miauw miauw), there is a clear upward trend. 3-MMC is a drug that closely resembles a combination of XTC, speed and cocaine. The drug causes severe withdrawal symptoms and cravings, making the risk of developing a serious addiction very high.",
+      },
+      {
+        title: "Story",
+        description:
+          "The experimentation stage for Jules begins in his teens. He starts drinking at 15, seeking freedom and an escape from his insecurities and struggles with eating disorders.",
       },
     ],
   },
@@ -74,14 +81,19 @@ const state: IState[] = [
     background: LevelTwoBg,
     facts: [
       {
-        title: "Fact #1",
+        title: "Social Use Stage Fact 1",
         description:
-          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+          "After using drugs once in general, the chance of you getting addicted are very",
       },
       {
-        title: "Fact #2",
+        title: "Social Use Stage Fact 2",
         description:
-          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+          "Drug abuse is linked to mental health disorders, such as anxiety, depression and impared cognative function ",
+      },
+      {
+        title: "Story",
+        description:
+          "Jules introduces alcohol to his social circle. While his friends treat drinking as an occasional activity, Jules finds herself unable to stop thinking about alcohol, marking the transition from social use to a deeper involvement.",
       },
     ],
   },
@@ -92,14 +104,19 @@ const state: IState[] = [
     background: LevelThreeBg,
     facts: [
       {
-        title: "Fact #1",
+        title: "Habbit Use Stage Fact 1",
         description:
-          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+          "After using the drugs multiple times the chance of getting addicted increases, and starts alters the brain  when using drugs becomes a habit",
       },
       {
-        title: "Fact #2",
+        title: "Habbit Use Stage Fact 2",
         description:
-          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+          "Addiction is a chronical illness, where the dopamine receptores in the brain are decreased. When this happend your brain therefore is permanently altered. ",
+      },
+      {
+        title: "Story",
+        description:
+          "In college, Jules' drinking escalates. He joins a sorority, befriends drug dealers, and starts drinking more heavily. This phase signifies his slipping into habitual use, where drinking becomes a regular part of his life.",
       },
     ],
   },
@@ -110,14 +127,19 @@ const state: IState[] = [
     background: LevelFourBg,
     facts: [
       {
-        title: "Fact #1",
+        title: "Dependance Stage Fact 1",
         description:
-          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+          "Drug abuse often strains relationships with family and friends, leading to conflicts and isolation.",
       },
       {
-        title: "Fact #2",
+        title: "Dependance Stage Fact 2",
         description:
-          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+          "Repeated use of drugs can damage the essential decision-making center at the front of the brain. This area, known as the prefrontal cortex, is the very region that should help you recognize the harms of using addictive substances.",
+      },
+      {
+        title: "Story",
+        description:
+          "Jules reaches a point of dependence when he can no longer achieve the desired effects of alcohol. his alcoholism progresses, impacting his life significantly - academically, socially, and personally, including a traumatic miscarriage and being asked to leave university.",
       },
     ],
   },
@@ -128,14 +150,19 @@ const state: IState[] = [
     background: LevelFiveBg,
     facts: [
       {
-        title: "Fact #1",
+        title: "Addiction Stage Fact 1",
         description:
-          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+          "Supporting a drug habit can be expensive, leading to financial diffuculties and instability.",
       },
       {
-        title: "Fact #2",
+        title: "Addiction Stage Fact 2",
         description:
-          "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+          "In 2021 there were 298 deads of drugs overdosis in the netherlands. Thats more then one person per day.",
+      },
+      {
+        title: "Story",
+        description:
+          "This stage is characterized by Jules' complete loss of control over his drinking, culminating in his realization and acceptance of being an alcoholic. This is a crucial turning point in his story.",
       },
     ],
   },
@@ -151,33 +178,44 @@ const stages: string[] = [
 ];
 
 const backgroundStyle = (level: number) => ({
-  minHeight: "100%",
+  minheight: "100%",
   backgroundImage: `url(${state[level].background})`,
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "center center",
 });
 
-function Fact({ title, description }: IFact) {
-  return (
-    <div className="fact">
-      <div>{title}</div>
-      <div>{description}</div>
-    </div>
-  );
-}
+// Button colors
+const buttonColors = [
+  { backgroundColor: "#FFFFFF", color: "#000000" },
+  { backgroundColor: "#F1F2EB", color: "#000000" },
+  { backgroundColor: "#D8DAD3", color: "#000000" },
+  { backgroundColor: "#A4C2A5", color: "#FFFFFF" },
+  { backgroundColor: "#566246", color: "#FFFFFF" },
+  { backgroundColor: "#4A4A48", color: "#FFFFFF" },
+];
+
+const buttonStyle = (level: number) => ({
+  backgroundColor: buttonColors[level].backgroundColor,
+  color: buttonColors[level].color,
+});
 
 function App() {
   const [clickProgress, setClickProgress] = useState(1);
   const [level, setLevel] = useState(0);
   const [progress, setProgress] = useState(0);
   const [addiciton, setAddiciton] = useState(stages[level]);
+  const [modalOpen, setModalOpen] = useState(false);
+
   // Used for Progress bar
   const maxCompleted = (MAX_LEVEL + 1) * NR_CLICKS;
 
   const handleClick = () => {
-    setClickProgress((prevProgress) => prevProgress + 1);
-    setProgress((p) => p + 1);
+    if (progress !== maxCompleted) {
+      setClickProgress((prevProgress) => prevProgress + 1);
+      setProgress((p) => p + 1);
+    }
+
     if (clickProgress % NR_CLICKS == 0 && level <= MAX_LEVEL - 1) {
       setLevel((prevLevel) => {
         prevLevel = prevLevel + 1;
@@ -187,11 +225,22 @@ function App() {
     }
   };
 
+  const handleModalOpen = () => {
+    setModalOpen(true);
+
+    // Automatically set modalOpen to false after 10 seconds
+    setTimeout(() => {
+      setModalOpen(false);
+    }, 10000); // 10000 milliseconds = 10 seconds
+  };
+
   return (
-    <div>
+    <div className="mainOuterWrapper">
       <div className="mainWrapper">
         <div className="levelBarWrapper">
           <ProgressBar
+            bgColor={buttonColors[level].backgroundColor}
+            labelColor={buttonColors[level].color}
             height="70px"
             completed={progress}
             maxCompleted={maxCompleted}
@@ -204,10 +253,36 @@ function App() {
             <img src={state[level].mainActor} alt="Main actor" />
           </div>
           <div>
-            <button onClick={handleClick}> Drink That </button>
+            <button
+              className="defaultBtn"
+              style={buttonStyle(level)}
+              onClick={handleClick}
+            >
+              Use That
+            </button>
           </div>
-          <div>LEVEL: {level}</div>
-          <div>STAGE: {addiciton}</div>
+          <div className="outerDashboard">
+            <div className="dashboard">
+              <div className="sectionItem">
+                <b>LEVEL</b>
+                <div>{level}</div>
+              </div>
+              <div className="pipe"></div>
+              <div className="sectionItem">
+                <b>STAGE</b>
+                <div>{addiciton}</div>
+              </div>
+            </div>
+          </div>
+          {progress === maxCompleted ? (
+            <div className="rehabWrapper">
+              <button className="rehabBtn" onClick={handleModalOpen}>
+                Rehab
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div className="factsList">
           {state[level].facts.map((fact, index) => (
@@ -219,6 +294,7 @@ function App() {
           ))}
         </div>
       </div>
+      {modalOpen ? <Modal className={modalOpen ? "fadeIn" : ""} /> : ""}
     </div>
   );
 }

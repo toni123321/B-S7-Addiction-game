@@ -1,3 +1,7 @@
+.mainOuterWrapper {
+  position: relative;
+}
+
 .mainWrapper {
   display: flex;
   justify-content: space-around;
@@ -5,6 +9,7 @@
   height: 100vh;
   width: 100vw;
   background-color: aliceblue;
+  font-family: cursive;
 }
 
 .middleSection {
@@ -29,11 +34,47 @@
   align-items: flex-end;
   width: 300px;
   height: 300px;
+  border-radius: 1rem;
 }
 
 .mainActorWrapper img {
   width: 40%;
   height: 40%;
+}
+
+.outerDashboard {
+  border: 0.2rem solid black;
+  border-radius: 0.8rem;
+  width: 100%;
+  padding: 1rem;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sectionItem {
+  width: 40%;
+  text-align: center;
+}
+
+.pipe {
+  width: 0.2rem;
+  background-color: #000;
+}
+
+.defaultBtn {
+  padding: 1rem 1.8rem;
+  border-radius: 0.8rem;
+  font-weight: 600;
+}
+
+.rehabBtn {
+  padding: 1rem 1.8rem;
+  border-radius: 0.8rem;
+  font-weight: 600;
+  background-color: lightgreen;
 }
 
 .factsList {
@@ -43,15 +84,4 @@
   flex-direction: column;
   gap: 2rem;
   width: 30%;
-}
-
-.fact {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  gap: 0.5rem;
-  background-color: white;
 }
