@@ -13,11 +13,8 @@ import LevelTwoBg from "./assets/level-2-bg.jpg";
 import LevelThreeBg from "./assets/level-3-bg.jpg";
 import LevelFourBg from "./assets/level-4-bg.jpg";
 import LevelFiveBg from "./assets/level-5-bg.jpg";
-
-interface IFact {
-  title: string;
-  description: string;
-}
+import Modal from "./components/Modal/Modal";
+import Fact, { IFact } from "./components/Fact/Fact";
 
 const MAX_LEVEL = 5;
 const NR_CLICKS = 4; // Nr of click per level
@@ -203,26 +200,22 @@ const buttonStyle = (level: number) => ({
   color: buttonColors[level].color,
 });
 
-function Fact({ title, description }: IFact) {
-  return (
-    <div className="fact">
-      <div className="factTitle">{title}</div>
-      <div>{description}</div>
-    </div>
-  );
-}
-
 function App() {
   const [clickProgress, setClickProgress] = useState(1);
   const [level, setLevel] = useState(0);
   const [progress, setProgress] = useState(0);
   const [addiciton, setAddiciton] = useState(stages[level]);
+  const [modalOpen, setModalOpen] = useState(false);
+
   // Used for Progress bar
   const maxCompleted = (MAX_LEVEL + 1) * NR_CLICKS;
 
   const handleClick = () => {
-    setClickProgress((prevProgress) => prevProgress + 1);
-    setProgress((p) => p + 1);
+    if (progress !== maxCompleted) {
+      setClickProgress((prevProgress) => prevProgress + 1);
+      setProgress((p) => p + 1);
+    }
+
     if (clickProgress % NR_CLICKS == 0 && level <= MAX_LEVEL - 1) {
       setLevel((prevLevel) => {
         prevLevel = prevLevel + 1;
@@ -232,12 +225,22 @@ function App() {
     }
   };
 
+  const handleModalOpen = () => {
+    setModalOpen(true);
+
+    // Automatically set modalOpen to false after 10 seconds
+    setTimeout(() => {
+      setModalOpen(false);
+    }, 10000); // 10000 milliseconds = 10 seconds
+  };
+
   return (
-    <div>
+    <div className="mainOuterWrapper">
       <div className="mainWrapper">
         <div className="levelBarWrapper">
           <ProgressBar
             bgColor={buttonColors[level].backgroundColor}
+            labelColor={buttonColors[level].color}
             height="70px"
             completed={progress}
             maxCompleted={maxCompleted}
@@ -251,24 +254,35 @@ function App() {
           </div>
           <div>
             <button
-              className="drinkBtn"
+              className="defaultBtn"
               style={buttonStyle(level)}
               onClick={handleClick}
             >
-              Drink That
+              Use That
             </button>
           </div>
           <div className="outerDashboard">
             <div className="dashboard">
               <div className="sectionItem">
-                <b>LEVEL:</b> {level}
+                <b>LEVEL</b>
+                <div>{level}</div>
               </div>
               <div className="pipe"></div>
               <div className="sectionItem">
-                <b>STAGE:</b> {addiciton}
+                <b>STAGE</b>
+                <div>{addiciton}</div>
               </div>
             </div>
           </div>
+          {progress === maxCompleted ? (
+            <div className="rehabWrapper">
+              <button className="rehabBtn" onClick={handleModalOpen}>
+                Rehab
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div className="factsList">
           {state[level].facts.map((fact, index) => (
@@ -280,6 +294,7 @@ function App() {
           ))}
         </div>
       </div>
+      {modalOpen ? <Modal className={modalOpen ? "fadeIn" : ""} /> : ""}
     </div>
   );
 }

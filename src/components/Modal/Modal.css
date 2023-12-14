@@ -1,0 +1,41 @@
+.modal {
+  height: 90%;
+  width: 90%;
+  border: 0.2rem solid black;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: lightgreen;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: cursive;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 2s; /* Adjust the time as needed */
+}
+
+.title {
+  text-decoration: underline;
+}
+
+.description {
+  padding: 5rem;
+  font-size: large;
+}

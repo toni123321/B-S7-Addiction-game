@@ -1,0 +1,16 @@
+.fact {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 0.5rem;
+  background-color: white;
+  border-radius: 1rem;
+}
+
+.factTitle {
+  font-weight: 600;
+  text-decoration: underline;
+}
