@@ -158,6 +158,21 @@ const backgroundStyle = (level: number) => ({
   backgroundPosition: "center center",
 });
 
+// Button colors
+const buttonColors = [
+  { backgroundColor: "#FFFFFF", color: "#000000" },
+  { backgroundColor: "#F1F2EB", color: "#000000" },
+  { backgroundColor: "#D8DAD3", color: "#000000" },
+  { backgroundColor: "#A4C2A5", color: "#FFFFFF" },
+  { backgroundColor: "#566246", color: "#FFFFFF" },
+  { backgroundColor: "#4A4A48", color: "#FFFFFF" },
+];
+
+const buttonStyle = (level: number) => ({
+  backgroundColor: buttonColors[level].backgroundColor,
+  color: buttonColors[level].color,
+});
+
 function Fact({ title, description }: IFact) {
   return (
     <div className="fact">
@@ -204,7 +219,13 @@ function App() {
             <img src={state[level].mainActor} alt="Main actor" />
           </div>
           <div>
-            <button onClick={handleClick}> Drink That </button>
+            <button
+              className="drinkBtn"
+              style={buttonStyle(level)}
+              onClick={handleClick}
+            >
+              Drink That
+            </button>
           </div>
           <div>LEVEL: {level}</div>
           <div>STAGE: {addiciton}</div>

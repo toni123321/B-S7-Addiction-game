@@ -5,6 +5,7 @@
   height: 100vh;
   width: 100vw;
   background-color: aliceblue;
+  font-family: cursive;
 }
 
 .middleSection {
@@ -29,11 +30,18 @@
   align-items: flex-end;
   width: 300px;
   height: 300px;
+  border-radius: 1rem;
 }
 
 .mainActorWrapper img {
   width: 40%;
   height: 40%;
+}
+
+.drinkBtn {
+  padding: 1rem 1.8rem;
+  border-radius: 0.8rem;
+  font-weight: 600;
 }
 
 .factsList {
@@ -54,4 +62,5 @@
   padding: 1rem;
   gap: 0.5rem;
   background-color: white;
+  border-radius: 1rem;
 }
