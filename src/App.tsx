@@ -237,6 +237,7 @@ function App() {
       <div className="mainWrapper">
         <div className="levelBarWrapper">
           <ProgressBar
+            bgColor={buttonColors[level].backgroundColor}
             height="70px"
             completed={progress}
             maxCompleted={maxCompleted}
