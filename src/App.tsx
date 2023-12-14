@@ -206,7 +206,7 @@ const buttonStyle = (level: number) => ({
 function Fact({ title, description }: IFact) {
   return (
     <div className="fact">
-      <div>{title}</div>
+      <div className="factTitle">{title}</div>
       <div>{description}</div>
     </div>
   );
@@ -257,8 +257,17 @@ function App() {
               Drink That
             </button>
           </div>
-          <div>LEVEL: {level}</div>
-          <div>STAGE: {addiciton}</div>
+          <div className="outerDashboard">
+            <div className="dashboard">
+              <div className="sectionItem">
+                <b>LEVEL:</b> {level}
+              </div>
+              <div className="pipe"></div>
+              <div className="sectionItem">
+                <b>STAGE:</b> {addiciton}
+              </div>
+            </div>
+          </div>
         </div>
         <div className="factsList">
           {state[level].facts.map((fact, index) => (

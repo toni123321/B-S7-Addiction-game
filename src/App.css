@@ -38,6 +38,28 @@
   height: 40%;
 }
 
+.outerDashboard {
+  border: 0.2rem solid black;
+  border-radius: 0.8rem;
+  width: 100%;
+  padding: 1rem;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sectionItem {
+  width: 40%;
+  text-align: center;
+}
+
+.pipe {
+  width: 0.2rem;
+  background-color: #000;
+}
+
 .drinkBtn {
   padding: 1rem 1.8rem;
   border-radius: 0.8rem;
@@ -63,4 +85,9 @@
   gap: 0.5rem;
   background-color: white;
   border-radius: 1rem;
+}
+
+.factTitle {
+  font-weight: 600;
+  text-decoration: underline;
 }
